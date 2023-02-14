@@ -1,0 +1,72 @@
+
+
+Data -> INF!
+
+1 VM = 2 numbers!
+
+1, 2, 3 -> 2 machines!
+
+SUM of all numbers!
+
+M1-> 1,2  = 3     ———replication—— M3-> 1,2
+M2-> 3	= 3											M4-> 3
+M1+m2 = 3 + 3 = 6 = 1+2+3
+
+SHARDING 
+
+M1-> 1,2     = 3
+M2-> 2,3           = 5      
+M3-> 3,1 = 4
+
+1 + 2 + 3 = 12
+
+
+Project-> 5 VPCs!
+
+-> always 1 Default VPC!
+	-> this VPC is required otherwise we can’t even create VMs!
+
+best case??-> NOT!
+
+Production-> 1st thing we do-> is delete the default VPC!
+	-> either Auto or Custom VPC!
+
+3 VPCs:
+1. Default-> SSH and RDP -> always allowed!
+                    1. should be deleted unless for dev/test purposes!
+                    2. by default the VPC is available in all regions
+                            1. if you want to disable a particular region, that’s not possible!
+2. Auto
+            1. bare minimum VPC for you with only load balancer and internal communication allowed
+            2. All the regions will contain the subnet!
+            3. Used when all the regions should contain your VMs or for global distribution
+3. Custom VPC
+            1. bare minimum VPC for you with only load balancer and internal communication allowed
+            2. You decide the region containing SUBNETS!
+            3. Used when you need to control the availability regions!
+
+
+
+
+Load Balancers:
+
+DoS/DDoS: 
+	HTTPS (External) or SSL Proxy
+
+incoming-> from internet
+
+TCP Proxy, Internal and Regional 
+
+GCP Networking:
+
+Network-> Global
+Subnet -> Regional
+Devices/VM-> Zonal!
+
+
+Low latency, private IP-> Interconnect!
+
+private IP, latency not a problem, monitoring, backup to interconnect-> IPSec Cloud VPN
+
+public IP address, NO private IP access, no WWW internet, access to GCP private services (GSuite, Gmail, youtube…), -> Network Peering
+
